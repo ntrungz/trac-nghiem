@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kỹ thuật Điện tử (Điện tử tương tự) — Luyện tập Trực quan (/home/ktdt)</title>
+  <meta name="description" content="Trang học phần Kỹ thuật Điện tử (/home/ktdt): Bản đồ dạng bài, công thức trọng tâm và bộ bài tập Khuếch đại BJT mắc EC (Bài 3)." />
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="../home/" class="breadcrumb-link" id="nav-home">🏠 /home</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="breadcrumb-current" id="nav-ktdt">⚡ ktdt (Kỹ thuật Điện tử)</span>
+      </nav>
+      <div class="header-actions">
+        <a href="bai-3/" class="btn btn-primary" id="btn-goto-bai3">Mở Bài 3 (BJT mắc EC) →</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-hero">
+      <span class="card-tag">Học phần cơ sở ngành ĐKTĐ & Tự động hóa</span>
+      <h1>Kỹ thuật Điện tử (Điện tử tương tự)</h1>
+      <p>
+        Hệ thống hóa các dạng bài tập tính toán phân cực tĩnh (DC), đường tải tĩnh và sơ đồ tương đương xoay chiều tín hiệu nhỏ (AC) theo đúng quy ước ký hiệu trên lớp.
+      </p>
+      <div style="margin-top: 1.15rem; display: flex; flex-wrap: wrap; gap: 0.65rem;">
+        <a href="bai-3/" class="btn btn-primary" id="hero-start-bai3">🚀 Vào luyện ngay Bài 3: Khuếch đại BJT mắc EC (6 Câu)</a>
+      </div>
+    </section>
+
+    <section aria-label="Danh sách 6 dạng bài trong Bài 3">
+      <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.9rem;">
+        📘 Bài 3: Khuếch đại BJT mắc Emitter chung (EC) — 6 Sơ đồ chuẩn
+      </h2>
+
+      <div class="card-grid">
+        <article class="course-card">
+          <div>
+            <span class="card-tag">Câu 1 · Dạng 3.1</span>
+            <h3>EC Phân cực cố định (Fixed Bias)</h3>
+            <p>Cực E nối thẳng xuống đất (RE = 0), cực B phân cực qua RB = 470 kΩ từ nguồn +Ucc = 12 V.</p>
+          </div>
+          <div class="formula-pill">IB = (Ucc − UBE)/RB · Ku = −RC/re</div>
+          <a href="bai-3/?cau=1" class="btn btn-primary" id="card-cau-1">Luyện Câu 1 →</a>
+        </article>
+
+        <article class="course-card">
+          <div>
+            <span class="card-tag">Câu 2 · Dạng 3.2</span>
+            <h3>EC Ổn định Emitter CÓ tụ CE</h3>
+            <p>Có RE = 470 Ω ổn định nhiệt một chiều, và có tụ thoát CE = 10 µF nối tắt RE ở chế độ xoay chiều.</p>
+          </div>
+          <div class="formula-pill">IB = (Ucc − UBE)/[RB + (β+1)RE] · Ku = −RC/re</div>
+          <a href="bai-3/?cau=2" class="btn btn-primary" id="card-cau-2">Luyện Câu 2 →</a>
+        </article>
+
+        <article class="course-card">
+          <div>
+            <span class="card-tag">Câu 3 · Dạng 3.3</span>
+            <h3>EC Ổn định Emitter KHÔNG có tụ CE</h3>
+            <p>Không có tụ CE nên RE = 1 kΩ vẫn tồn tại trong mạch xoay chiều, làm tăng tổng trở vào Zb = β(re + RE).</p>
+          </div>
+          <div class="formula-pill">Zb = β(re + RE) · Ku = −RC/(re + RE)</div>
+          <a href="bai-3/?cau=3" class="btn btn-primary" id="card-cau-3">Luyện Câu 3 →</a>
+        </article>
+
+        <article class="course-card">
+          <div>
+            <span class="card-tag">Câu 4 · Dạng 3.4</span>
+            <h3>EC Phân cực phân áp CÓ tụ CE</h3>
+            <p>Cầu phân áp R1 = 220 kΩ, R2 = 56 kΩ ở cực B (thu gọn Thevenin Rtđ, Utđ), có tụ CE nối tắt RE = 330 Ω.</p>
+          </div>
+          <div class="formula-pill">Rtđ = R1 // R2 · Utđ = R2·Ucc/(R1 + R2)</div>
+          <a href="bai-3/?cau=4" class="btn btn-primary" id="card-cau-4">Luyện Câu 4 →</a>
+        </article>
+
+        <article class="course-card">
+          <div>
+            <span class="card-tag">Câu 5 · Dạng 3.5</span>
+            <h3>EC Phân cực phân áp KHÔNG có tụ CE</h3>
+            <p>Cầu phân áp R1 = 820 kΩ, R2 = 270 kΩ kết hợp RE = 180 Ω không có tụ thoát CE ở cực Emitter.</p>
+          </div>
+          <div class="formula-pill">Zv = Rtđ // β(re + RE) · Ki = Zv/(re + RE)</div>
+          <a href="bai-3/?cau=5" class="btn btn-primary" id="card-cau-5">Luyện Câu 5 →</a>
+        </article>
+
+        <article class="course-card">
+          <div>
+            <span class="card-tag">Câu 6 · Dạng 3.6</span>
+            <h3>Phân cực hồi tiếp từ cực C có tụ CE</h3>
+            <p>Điện trở RB = 680 kΩ nối từ cực C về cực B tạo hồi tiếp âm điện áp, RE = 330 Ω mắc song song tụ CE.</p>
+          </div>
+          <div class="formula-pill">Zv = re/(1/β + RC/RB) · Zr = RC // RB</div>
+          <a href="bai-3/?cau=6" class="btn btn-primary" id="card-cau-6">Luyện Câu 6 →</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    Kỹ thuật Điện tử (<code>/home/ktdt</code>) · Hệ thống Gia sư Trắc nghiệm Kỹ thuật
+  </footer>
+</body>
+</html>

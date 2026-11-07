@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bài 3: Khuếch đại BJT mắc EC — Kỹ thuật Điện tử (/home/ktdt/bai-3)</title>
+  <meta name="description" content="Luyện tập trực quan Bài 3 môn Kỹ thuật Điện tử (Điện tử tương tự): 6 sơ đồ mạch khuếch đại BJT mắc Emitter chung (EC), đường tải tĩnh, sơ đồ tương đương xoay chiều và lời giải mẫu." />
+  <link rel="stylesheet" href="../../../assets/styles.css" />
+  <script>
+    window.ASSETS_BASE = "../../../assets";
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="../../" class="breadcrumb-link" id="nav-home">🏠 /home</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../" class="breadcrumb-link" id="nav-ktdt">⚡ ktdt (Kỹ thuật Điện tử)</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="breadcrumb-current" id="nav-bai3">📘 bài-3 (Khuếch đại BJT mắc EC)</span>
+      </nav>
+
+      <div class="header-actions">
+        <span id="xp-badge" class="stat-badge">⭐ 0 XP</span>
+        <span id="combo-badge" class="stat-badge amber">🔥 Combo 0</span>
+        <button id="btn-mistakes" onclick="toggleMistakeModal()" class="btn">
+          📓 Sổ lỗi sai (<span id="mistake-count">0</span>)
+        </button>
+        <button id="btn-theme" onclick="toggleTheme()" class="btn" title="Đổi giao diện Sáng/Tối">
+          🌓 Giao diện
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-hero" style="padding: 1.15rem 1.4rem; margin-bottom: 1rem;">
+      <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:0.75rem;">
+        <div>
+          <h1 id="problem-title" style="margin-bottom:0.15rem;">Câu 1: EC Phân cực cố định</h1>
+          <p style="font-size:0.86rem;">
+            Bộ 6 bài tập BJT mắc Emitter chung (EC) — Bám sát 100% ký hiệu, quy ước làm tròn 2 chữ số thập phân và lời giải mẫu trong vở.
+          </p>
+        </div>
+        <div class="mode-Order-group" role="tablist" aria-label="Chế độ luyện tập">
+          <button onclick="setMode('quiz')" id="mode-quiz" class="mode-btn active">🎯 Cấp 2: Trắc nghiệm 5 bước</button>
+          <button onclick="setMode('fill')" id="mode-fill" class="mode-btn">✍️ Cấp 3: Điền khung giải</button>
+          <button onclick="setMode('twin')" id="mode-twin" class="mode-btn">🎲 Cấp 4: Bài sinh đôi</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem Selector Toolbar -->
+    <div class="toolbar-row">
+      <div class="pill-group" id="problem-tabs" role="tablist" aria-label="Chọn câu hỏi trong Bài 3">
+        <button onclick="selectProblem(1)" id="ptab-1" class="pill-btn active">Câu 1 · Cố định</button>
+        <button onclick="selectProblem(2)" id="ptab-2" class="pill-btn">Câu 2 · RE có tụ CE</button>
+        <button onclick="selectProblem(3)" id="ptab-3" class="pill-btn">Câu 3 · RE không CE</button>
+        <button onclick="selectProblem(4)" id="ptab-4" class="pill-btn">Câu 4 · Phân áp có CE</button>
+        <button onclick="selectProblem(5)" id="ptab-5" class="pill-btn">Câu 5 · Phân áp không CE</button>
+        <button onclick="selectProblem(6)" id="ptab-6" class="pill-btn">Câu 6 · Hồi tiếp cực C</button>
+      </div>
+    </div>
+
+    <!-- Mistake Log Drawer -->
+    <section id="mistake-modal" class="panel-card hidden" style="margin-bottom: 1.15rem;">
+      <div class="panel-header">
+        <strong>📓 Sổ lỗi sai cá nhân (Lưu tự động trên trình duyệt)</strong>
+        <button onclick="toggleMistakeModal()" class="btn">Đóng</button>
+      </div>
+      <div id="mistake-list" style="font-size:0.86rem; color:var(--text-secondary); line-height:1.65;">
+        Chưa có lỗi sai nào! Hãy bắt đầu trả lời các bước để kiểm tra.
+      </div>
+    </section>
+
+    <!-- 2-Column Split Interactive Workspace -->
+    <div class="workspace-grid">
+      <!-- Left Column: Visual Diagrams & Original Notebook Scans -->
+      <section class="panel-card" aria-label="Sơ đồ mạch và đồ thị trực quan">
+        <div class="panel-header">
+          <div class="pill-group">
+            <button onclick="setDiagramTab('dc')" id="dtab-dc" class="pill-btn active">1. Sơ đồ mạch</button>
+            <button onclick="setDiagramTab('load')" id="dtab-load" class="pill-btn">2. Đường tải</button>
+            <button onclick="setDiagramTab('ac')" id="dtab-ac" class="pill-btn">3. Mạch AC</button>
+            <button onclick="setDiagramTab('notebook')" id="dtab-notebook" class="pill-btn">📷 Ảnh cắt vở</button>
+            <button onclick="setDiagramTab('fullpage')" id="dtab-fullpage" class="pill-btn">📄 Toàn trang vở</button>
+          </div>
+          <button onclick="toggleRevealDiagram()" id="btn-reveal-diag" class="btn" style="font-size:0.76rem; padding:0.3rem 0.6rem;">
+            Hiện đáp án hình
+          </button>
+        </div>
+
+        <div id="diagram-container" class="diagram-stage">
+          <!-- Rendered by bai3-data.js -->
+        </div>
+
+        <div id="specs-bar" class="specs-box">
+          <!-- Component specifications -->
+        </div>
+      </section>
+
+      <!-- Right Column: Step-by-step Quiz / Fill-in-blank / Twin Problem -->
+      <section class="panel-card" aria-label="Khu vực trả lời câu hỏi và chấm điểm">
+        <!-- MODE 1: QUIZ -->
+        <div id="panel-quiz">
+          <div class="panel-header">
+            <div class="pill-group" id="step-pills"></div>
+            <button onclick="showNextHint()" id="btn-hint" class="btn">💡 Gợi ý (0/3)</button>
+          </div>
+
+          <div id="question-box">
+            <div id="step-subtitle" class="step-meta"></div>
+            <div id="question-text" class="question-prompt"></div>
+          </div>
+
+          <div id="hint-box" class="hint-banner hidden"></div>
+
+          <div id="options-grid" class="options-list"></div>
+
+          <div id="feedback-box" class="feedback-banner hidden"></div>
+        </div>
+
+        <!-- MODE 2: FILL IN THE BLANK -->
+        <div id="panel-fill" class="hidden">
+          <div class="panel-header">
+            <div>
+              <strong style="font-size:0.95rem;">✍️ Khung lời giải điền chỗ trống (Cấp 3 — Luyện tay có đỡ)</strong>
+              <p style="font-size:0.8rem; color:var(--text-secondary);">
+                Tự bấm máy tính và điền các giá trị làm tròn 2 chữ số thập phân (sai số cho phép ±1,5%).
+              </p>
+            </div>
+            <div style="display:flex; gap:0.45rem;">
+              <button onclick="gradeFillMode()" id="btn-grade-fill" class="btn btn-primary">✔ Chấm điểm</button>
+              <button onclick="fillShowSolution()" id="btn-show-fill" class="btn">Điền mẫu</button>
+            </div>
+          </div>
+
+          <div id="fill-form" class="input-grid"></div>
+          <div id="fill-feedback" class="feedback-banner hidden"></div>
+        </div>
+
+        <!-- MODE 3: TWIN PROBLEM -->
+        <div id="panel-twin" class="hidden">
+          <div class="panel-header">
+            <div>
+              <strong style="font-size:0.95rem;">🎲 Bài sinh đôi tự giải (Cấp 4 — Đổi số liệu ngẫu nhiên)</strong>
+              <p id="twin-specs" style="font-size:0.8rem; color:var(--accent-primary); font-family:var(--font-mono); margin-top:0.2rem;"></p>
+            </div>
+            <div style="display:flex; gap:0.45rem;">
+              <button onclick="generateTwinProblem()" id="btn-new-twin" class="btn">🎲 Đổi bộ số khác</button>
+              <button onclick="gradeTwinMode()" id="btn-grade-twin" class="btn btn-primary">✔ Chấm thang 10</button>
+            </div>
+          </div>
+
+          <div id="twin-form" class="input-grid"></div>
+          <div id="twin-feedback" class="feedback-banner hidden"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    Hệ thống Luyện tập Trực quan Kỹ thuật Điện tử · Đường dẫn: <code>/home/ktdt/bai-3</code> · Đã kiểm chứng 6/6 câu theo vở giải mẫu
+  </footer>
+
+  <script src="../../../assets/bai3-crops.js"></script>
+  <script src="../../../assets/bai3-data.js"></script>
+</body>
+</html>
