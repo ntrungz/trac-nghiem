@@ -1,0 +1,10 @@
+{
+  "name": "ntrungz-trac-nghiem",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cổng luyện tập trắc nghiệm các môn ngành Điều khiển & Tự động hóa (/home/ktdt/bai-3)",
+  "scripts": {
+    "build": "echo 'Static site ready'",
+    "deploy": "npx --yes wrangler@latest deploy"
+  }
+}
