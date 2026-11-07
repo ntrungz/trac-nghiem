@@ -1,0 +1,6 @@
+# Cloudflare Pages redirects for convenience aliases
+/home/ktdt/bai3 /home/ktdt/bai-3/ 301
+/home/ktdt/bai-tap-3 /home/ktdt/bai-3/ 301
+/ktdt /home/ktdt/ 301
+/ktdt/bai-3 /home/ktdt/bai-3/ 301
+/ktdt/bai3 /home/ktdt/bai-3/ 301
